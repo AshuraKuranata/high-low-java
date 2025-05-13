@@ -10,25 +10,24 @@ public class Main {
         System.out.println("High-Low: Building a simple terminal game to test Java\n");
         System.out.println("Player can type \"quit\" to close program.\n");
 
-        System.out.print("Enter First Name: ");
+        System.out.print("Enter First Name: "); // First Name Input
         String firstName = input.nextLine();
-        System.out.print("Enter Last Name: ");
+        System.out.print("Enter Last Name: "); // Last Name Input
         String lastName = input.nextLine();
 
         User user = new User(firstName, lastName);
         System.out.println("\nYour Full Name: " + user.getFullName() + "\n");
 
-        while (gameLoop == true) {
+        while (gameLoop == true) { // Game play Loop
             System.out.println("\n---");
             System.out.println("Your Stats: \nGames Played: " + user.games + " | Games Won: " + user.wins + " | Winstreak: " + user.winstreak + " | Games Lost: " + user.losses);
             System.out.println("---");
-            Number highLow = new Number();
+            Number highLow = new Number(); // New input values
             boolean guessLoop = true;
-            while (guessLoop == true) {
+            while (guessLoop == true) { // Player choice for guess loop
+                System.out.println("(type [q] or [quit] at anytime to close)");
                 System.out.println("\nNumber: " + highLow.current);
-                System.out.println("Next number: " + highLow.next);
-                System.out.println("(type [q] or [quit] at anytime to close)\n(type [s] to see [s]tats)");
-                System.out.print("\nChoose whether next number will be [h]igher or [l]ower:");
+                System.out.print("\nChoose  whether next number will be [h]igher or [l]ower: ");
                 String userAction = input.nextLine().toLowerCase();
                 if (userAction.equals("q") || userAction.equals("quit")) {
                     guessLoop = false;
@@ -72,11 +71,11 @@ public class Main {
                     user.games += 1;
                     guessLoop = false; 
                 }
-                else if (userAction.equals("s")) {
-                    System.out.println("\n---");
-                    System.out.println("Your Stats: \nGames Played: " + user.games + " | Games Won: " + user.wins + " | Winstreak: " + user.winstreak + " | Games Lost: " + user.losses);
-                    System.out.println("---");
-                }
+                // else if (userAction.equals("s")) {
+                //     System.out.println("\n---");
+                //     System.out.println("Your Stats: \nGames Played: " + user.games + " | Games Won: " + user.wins + " | Winstreak: " + user.winstreak + " | Games Lost: " + user.losses);
+                //     System.out.println("---");
+                // }
                 else {
                     System.out.println("Invalid input, try again.");
                 };
