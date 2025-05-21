@@ -8,7 +8,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("High-Low: Building a simple terminal game to test Java\n");
-        System.out.println("Player can type \"quit\" to close program.\n");
 
         System.out.print("Enter First Name: "); // First Name Input
         String firstName = input.nextLine();
@@ -18,6 +17,8 @@ public class Main {
         User user = new User(firstName, lastName);
         System.out.println("\nYour Full Name: " + user.getFullName() + "\n");
 
+        System.out.println("Player can type \"quit\" to close program.\n");
+
         while (gameLoop == true) { // Game play Loop
             System.out.println("\n---");
             System.out.println("Your Stats: \nGames Played: " + user.games + " | Games Won: " + user.wins + " | Winstreak: " + user.winstreak + " | Games Lost: " + user.losses);
@@ -26,16 +27,17 @@ public class Main {
             boolean guessLoop = true;
             while (guessLoop == true) { // Player choice for guess loop
                 System.out.println("(type [q] or [quit] at anytime to close)");
-                System.out.println("\nNumber: " + highLow.current);
-                System.out.print("\nChoose  whether next number will be [h]igher or [l]ower: ");
+                System.out.println("\nNumber: " + highLow.current); // Shows what the number that was drawn
+                // System.out.println("\nNext Number: " + highLow.next ); // TESTING - shows the next number that will be tested
+                System.out.print("\nChoose  whether next number will be [h]igher or [l]ower: .");
                 String userAction = input.nextLine().toLowerCase();
-                if (userAction.equals("q") || userAction.equals("quit")) {
+                if (userAction.equals("q") || userAction.equals("quit")) { // Quit Function
                     guessLoop = false;
                     gameLoop = false;
                     input.close();
                     System.out.println("Thanks for playing, goodbye!");
                 }
-                else if (userAction.equals("h")) {
+                else if (userAction.equals("h")) { // Guess = new number is higher
                     if (highLow.current < highLow.next) {
                         System.out.println("Congrats! The next number was: " + highLow.next + "!");
                         user.wins += 1;
@@ -53,7 +55,7 @@ public class Main {
                     user.games += 1;
                     guessLoop = false; 
                 }
-                else if (userAction.equals("l")) {
+                else if (userAction.equals("l")) { // Guess = new number is lower
                     if (highLow.current > highLow.next) {
                         System.out.println("Congrats! The next number was: " + highLow.next + "!");
                         user.wins += 1;
